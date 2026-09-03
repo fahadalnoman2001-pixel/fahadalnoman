@@ -1,0 +1,132 @@
+# ==============================================================================
+# AI Search & Retrieval Crawlers (GEO / AI-SEO / Citations)
+# Explicitly ALLOWED to maximize eligibility for AI citations
+# ==============================================================================
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+Disallow: /dashboard
+Disallow: /api/
+Disallow: /api
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+Disallow: /dashboard
+Disallow: /api/
+Disallow: /api
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+Disallow: /dashboard
+Disallow: /api/
+Disallow: /api
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+Disallow: /dashboard
+Disallow: /api/
+Disallow: /api
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+Disallow: /dashboard
+Disallow: /api/
+Disallow: /api
+
+User-agent: Claude-User
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+Disallow: /dashboard
+Disallow: /api/
+Disallow: /api
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+Disallow: /dashboard
+Disallow: /api/
+Disallow: /api
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+Disallow: /dashboard
+Disallow: /api/
+Disallow: /api
+
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+Disallow: /dashboard
+Disallow: /api/
+Disallow: /api
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+Disallow: /dashboard
+Disallow: /api/
+Disallow: /api
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+Disallow: /dashboard
+Disallow: /api/
+Disallow: /api
+
+# ==============================================================================
+# General Search Engines & Standard Crawlers (Wildcard Fallback)
+# ==============================================================================
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+Disallow: /dashboard
+Disallow: /api/
+Disallow: /api
+
+# ==============================================================================
+# Sitemap
+# ==============================================================================
+Sitemap: https://fahadalnoman.com/sitemap.xml

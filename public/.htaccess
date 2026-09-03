@@ -1,0 +1,79 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+  # Redirect HTTP and WWW to HTTPS Non-WWW in one step
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^(.*)$ https://fahadalnoman.com/$1 [R=301,L]
+
+  RewriteBase /
+  
+  # Route /api/* to the Laravel backend subfolder
+  RewriteRule ^api/(.*)$ admin/public/index.php [QSA,L]
+
+  # Route /mcp (and /mcp/*) to the Laravel backend for MCP server endpoints
+  RewriteRule ^mcp(/.*)?$ admin/public/index.php [QSA,L]
+
+  # Route OAuth 2.1 endpoints (/oauth/authorize, /oauth/token, /oauth/register) to Laravel
+  RewriteRule ^oauth/(.*)$ admin/public/index.php [QSA,L]
+
+  # Route /.well-known/* (OAuth Protected Resource + Authorization Server metadata) to Laravel
+  RewriteRule ^\.well-known/(.*)$ admin/public/index.php [QSA,L]
+
+  # Route sitemap.xml to sitemap.php dynamically
+  RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+  # If request matches an existing file or directory, serve it directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  
+  # Rewrite all other paths to index.html for client-side routing
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Prevent caching of index.html to ensure users always load the latest JS bundle
+<FilesMatch "\.(html|htm)$">
+  FileETag None
+  <IfModule mod_headers.c>
+    Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "Jan 01 1970 00:00:00 GMT"
+  </IfModule>
+</FilesMatch>
+
+# Enable browser caching for static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  
+  # Images
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  
+  # CSS and JS
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  
+  # Fonts
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+</IfModule>
+
+# Enable Gzip (DEFLATE) Compression
+<IfModule mod_deflate.c>
+  # Compress HTML, CSS, JavaScript, XML, JSON, and Fonts
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/xml application/json font/woff font/woff2 font/ttf font/otf image/svg+xml
+  
+  # Remove browser bugs for older browsers
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+</IfModule>
