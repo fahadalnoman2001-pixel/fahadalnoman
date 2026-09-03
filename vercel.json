@@ -1,15 +1,36 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/((?!sitemap\\.xml|robots\\.txt|ads\\.txt|google[^\"]+\\.html|favicon\\.png|favicon\\.svg|icons\\.svg|.*\\.(?:png|jpg|jpeg|webp|gif|svg|ico|css|js|map|woff2?|ttf|otf|eot)).*)",
+      "source": "/admin/:path*",
+      "destination": "/admin/public/index.php"
+    },
+    {
+      "source": "/mcp/:path*",
+      "destination": "/admin/public/index.php"
+    },
+    {
+      "source": "/oauth/:path*",
+      "destination": "/admin/public/index.php"
+    },
+    {
+      "source": "/.well-known/:path*",
+      "destination": "/admin/public/index.php"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "/admin/public/index.php"
+    },
+    {
+      "source": "/:path*",
       "destination": "/index.html"
     }
   ],
   "headers": [
     {
-      "source": "/sitemap\\.xml",
+      "source": "/sitemap.xml",
       "headers": [
         {
           "key": "Content-Type",
@@ -22,7 +43,7 @@
       ]
     },
     {
-      "source": "/robots\\.txt",
+      "source": "/robots.txt",
       "headers": [
         {
           "key": "Content-Type",
