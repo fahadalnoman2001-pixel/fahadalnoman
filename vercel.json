@@ -1,59 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "cleanUrls": true,
-  "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/admin/:path*",
-      "destination": "/admin/public/index.php"
-    },
-    {
-      "source": "/mcp/:path*",
-      "destination": "/admin/public/index.php"
-    },
-    {
-      "source": "/oauth/:path*",
-      "destination": "/admin/public/index.php"
-    },
-    {
-      "source": "/.well-known/:path*",
-      "destination": "/admin/public/index.php"
-    },
-    {
-      "source": "/api/:path*",
-      "destination": "/admin/public/index.php"
-    },
-    {
-      "source": "/:path*",
+      "source": "/:path(?!sitemap\\.xml|robots\\.txt|ads\\.txt|.*\\.[a-z0-9]{2,5}$).*",
       "destination": "/index.html"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/sitemap.xml",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/xml; charset=utf-8"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600, s-maxage=3600"
-        }
-      ]
-    },
-    {
-      "source": "/robots.txt",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/plain; charset=utf-8"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600, s-maxage=3600"
-        }
-      ]
     }
   ]
 }
