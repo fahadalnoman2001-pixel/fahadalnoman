@@ -186,27 +186,9 @@ const ROUTES = [
       </main>
     `,
   },
-  {
-    path: '/sitemap',
-    title: 'Sitemap — Fahad Al Noman',
-    description:
-      "Complete sitemap of fahadalnoman.com — About, Services, Contact, Blog, Privacy Policy, Terms of Service, and every published blog post.",
-    body: `
-      <header><nav><a href="/">Home</a> <a href="/about">About</a> <a href="/services">Services</a> <a href="/contact">Contact</a></nav></header>
-      <main>
-        <h1>Sitemap</h1>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/services">Services</a></li>
-          <li><a href="/contact">Contact</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/privacy">Privacy Policy</a></li>
-          <li><a href="/terms">Terms of Service</a></li>
-        </ul>
-      </main>
-    `,
-  },
+  // Note: /sitemap is intentionally not prerendered as an HTML page.
+  // It's served as the real /sitemap.xml file (see scripts/generate-sitemap.cjs).
+  // The React app redirects /sitemap -> /sitemap.xml at runtime.
 ];
 
 function replaceOrInsert(html, pattern, replacement) {

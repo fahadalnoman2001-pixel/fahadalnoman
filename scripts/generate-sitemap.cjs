@@ -39,7 +39,9 @@ const STATIC_ROUTES = [
   { loc: '/contact',  changefreq: 'monthly', priority: '0.8' },
   { loc: '/blog',     changefreq: 'daily',   priority: '0.9' },
   { loc: '/faq',      changefreq: 'monthly', priority: '0.6' },
-  { loc: '/sitemap',  changefreq: 'monthly', priority: '0.4' },
+  // No entry for /sitemap here — /sitemap.xml is the sitemap; the React app
+  // redirects /sitemap (the page) to /sitemap.xml. Listing it would create a
+  // self-referential entry and isn't useful for crawlers.
   { loc: '/terms',    changefreq: 'yearly',  priority: '0.3' },
   { loc: '/privacy',  changefreq: 'yearly',  priority: '0.3' },
 ];

@@ -8,7 +8,7 @@ const BlogPostPage = lazy(() => import("@/pages/BlogPostPage").then(m => ({ defa
 const BlogListPage = lazy(() => import("@/pages/BlogListPage").then(m => ({ default: m.BlogListPage })));
 const TermsPage = lazy(() => import("@/pages/TermsPage").then(m => ({ default: m.TermsPage })));
 const PrivacyPage = lazy(() => import("@/pages/PrivacyPage").then(m => ({ default: m.PrivacyPage })));
-const SitemapPage = lazy(() => import("@/pages/SitemapPage").then(m => ({ default: m.SitemapPage })));
+const SitemapPage = lazy(() => import("@/pages/SitemapPage").then(m => ({ default: m.SitemapPage }))); // eslint-disable-line @typescript-eslint/no-unused-vars
 const AboutPage = lazy(() => import("@/pages/AboutPage").then(m => ({ default: m.AboutPage })));
 const ServicesPage = lazy(() => import("@/pages/ServicesPage").then(m => ({ default: m.ServicesPage })));
 const ContactPage = lazy(() => import("@/pages/ContactPage").then(m => ({ default: m.ContactPage })));
@@ -214,7 +214,7 @@ export function App() {
           <Route path="/terms-of-service" element={<Navigate to="/terms" replace />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/privacy-policy" element={<Navigate to="/privacy" replace />} />
-          <Route path="/sitemap" element={<SitemapPage />} />
+          <Route path="/sitemap" element={<Navigate to="/sitemap.xml" replace />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>
